@@ -1,5 +1,5 @@
-import { Content } from "@/Components/Content/Content";
+import { SongRadio } from "@/Components/SongRadio/SongRadio";
 
 export default function Page() {
-	return <Content></Content>;
+	return <SongRadio></SongRadio>;
 }

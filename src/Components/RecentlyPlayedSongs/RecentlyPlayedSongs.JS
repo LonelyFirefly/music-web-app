@@ -11,6 +11,8 @@ export function RecentlyPlayedSongs({ recentlyPlayedSongsList }) {
 			<Song></Song>
 			<Song></Song>
 			<Song></Song>
+			<Song></Song>
+			<Song></Song>
 		</ul>
 	);
 }
