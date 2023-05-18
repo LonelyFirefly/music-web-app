@@ -10,6 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
+		// as a root layout, it should contain html and body tags
 		<html lang="en">
 			<body className={inter.className}>{children}</body>
 		</html>
