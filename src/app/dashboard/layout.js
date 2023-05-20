@@ -1,12 +1,15 @@
 import { Sidebar } from "@/Components/Sidebar/Sidebar";
+import { TopBar } from "@/Components/TopBar/TopBar";
 
 export default function DashboardLayout({ children }) {
 	return (
-		<section>
+		<section className="grid grid-cols-[minmax(150px,_20vw)_1fr] w-screen h-screen">
 			<Sidebar />
 			{/* shared UI */}
-			<nav></nav>
-			{children}
+			<div>
+				<TopBar />
+				{children}
+			</div>
 		</section>
 	);
 }
