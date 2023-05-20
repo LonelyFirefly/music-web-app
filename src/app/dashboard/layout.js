@@ -1,5 +1,6 @@
-import { Sidebar } from "@/Components/Sidebar/Sidebar";
 import { TopBar } from "@/Components/TopBar/TopBar";
+import { Sidebar } from "@/Components/Sidebar/Sidebar";
+import { MusicPlayerPanel } from "@/Components/MusicPlayerPanel/MusicPlayerPanel";
 
 export default function DashboardLayout({ children }) {
 	return (
@@ -9,6 +10,7 @@ export default function DashboardLayout({ children }) {
 			<div>
 				<TopBar />
 				{children}
+				<MusicPlayerPanel />
 			</div>
 		</section>
 	);
