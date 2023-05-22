@@ -1,7 +1,38 @@
-import { useState } from "react";
+import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
+import { useEffect, useState } from "react";
+import styles from "./styles.module.css";
 
-export function SongSlider() {
-	const [playbackTime, setPlaybackTime] = useState(0);
+export function SongSlider({ trackDuration, isPlaying, setIsPlaying }) {
+	const [currentTime, setCurrentTime] = useState(0);
+	const [duration, setDuration] = useState(trackDuration);
+
+	useEffect(() => {
+		let interval = null;
+		if (isPlaying) {
+			interval = setInterval(() => {
+				setCurrentTime((prevTime) => prevTime + 1000);
+			}, 1000);
+		}
+		return () => clearInterval(interval);
+	}, [isPlaying]);
+
+	const progress = ((currentTime / duration) * 100).toFixed(2);
+
+	return (
+		<div>
+			<progress
+				className={styles.progress}
+				value={progress}
+				max={duration}></progress>
+			<div> {convertFromMsToSec(currentTime)} </div>
+			<div> {convertFromMsToSec(duration)} </div>
+			<button onClick={() => setIsPlaying(!isPlaying)}>
+				{isPlaying ? "Pause" : "Play"}
+			</button>
+			<button onClick={() => setCurrentTime(0)}>Restart</button>
+		</div>
+	);
+
 	return (
 		<div>
 			<span> CurrentSongTime </span>

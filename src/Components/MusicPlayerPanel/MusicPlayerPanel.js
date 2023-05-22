@@ -6,6 +6,7 @@ export function MusicPlayerPanel({
 	songName,
 	songArtistName,
 	songAlbumCoverImg,
+	trackDuration,
 }) {
 	return (
 		<div className="min-h-max bg-gray-900 flex justify-between">
@@ -14,7 +15,7 @@ export function MusicPlayerPanel({
 				songArtistName={songArtistName}
 				songAlbumCoverImg={songAlbumCoverImg}
 			/>
-			<PlaybackControls />
+			<PlaybackControls trackDuration={trackDuration} />
 			<SongControls />
 		</div>
 	);

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { SongSlider } from "../SongSlider/SongSlider";
 
-export function PlaybackControls() {
-	const [isPlayed, setIsPlayed] = useState(false);
+export function PlaybackControls({ trackDuration }) {
+	const [isPlaying, setIsPlaying] = useState(false);
 
 	function handleClick() {
-		setIsPlayed(!isPlayed);
+		setIsPlaying(!isPlaying);
 	}
 
 	return (
@@ -22,9 +22,9 @@ export function PlaybackControls() {
 					className="w-8 pr-2"
 				/>
 				<img
-					alt={isPlayed ? "stop-icon" : "play-icon"}
+					alt={isPlaying ? "stop-icon" : "play-icon"}
 					src={
-						isPlayed
+						isPlaying
 							? "/images/dark-theme/icon-dark-theme-pause.svg"
 							: "/images/dark-theme/icon-dark-theme-play.svg"
 					}
@@ -43,7 +43,11 @@ export function PlaybackControls() {
 					className="w-10 pl-6"
 				/>
 			</div>
-			<SongSlider />
+			<SongSlider
+				trackDuration={trackDuration}
+				isPlaying={isPlaying}
+				setIsPlaying={setIsPlaying}
+			/>
 		</div>
 	);
 }
