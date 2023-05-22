@@ -1,3 +1,5 @@
+import { PlaybackControls } from "../PlaybackControls/PlaybackControls";
+import { SongControls } from "../SongControls/SongControls ";
 import { SongDetails } from "../SongDetails/SongDetails";
 
 export function MusicPlayerPanel({
@@ -12,6 +14,8 @@ export function MusicPlayerPanel({
 				songArtistName={songArtistName}
 				songAlbumCoverImg={songAlbumCoverImg}
 			/>
+			<PlaybackControls />
+			<SongControls />
 		</div>
 	);
 }

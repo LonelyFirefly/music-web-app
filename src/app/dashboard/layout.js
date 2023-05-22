@@ -1,3 +1,5 @@
+"use client";
+
 import { TopBar } from "@/Components/TopBar/TopBar";
 import { Sidebar } from "@/Components/Sidebar/Sidebar";
 import { MusicPlayerPanel } from "@/Components/MusicPlayerPanel/MusicPlayerPanel";
