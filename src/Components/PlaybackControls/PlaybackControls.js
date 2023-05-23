@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SongSlider } from "../SongSlider/SongSlider";
+import { ProgressBar } from "../ProgressBar/ProgressBar";
 
 export function PlaybackControls({ trackDuration }) {
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -43,7 +43,7 @@ export function PlaybackControls({ trackDuration }) {
 					className="w-10 pl-6"
 				/>
 			</div>
-			<SongSlider
+			<ProgressBar
 				trackDuration={trackDuration}
 				isPlaying={isPlaying}
 				setIsPlaying={setIsPlaying}
