@@ -2,17 +2,10 @@ import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
-export function ProgressBar({
-	trackDuration,
-	isPlaying,
-	setIsPlaying,
-}) {
+export function ProgressBar({ trackDuration, isPlaying, setIsPlaying }) {
 	const [currentTime, setCurrentTime] = useState(0);
 	const duration = trackDuration;
 	const progress = ((currentTime / duration) * 100).toFixed(2);
-
-
-
 
 	useEffect(() => {
 		let interval = null;
@@ -21,7 +14,7 @@ export function ProgressBar({
 				setCurrentTime((prevTime) => prevTime + 1000);
 			}, 1000);
 		}
-		
+
 		return () => clearInterval(interval);
 	}, [isPlaying, progress]);
 

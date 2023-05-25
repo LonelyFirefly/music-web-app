@@ -1,26 +1,13 @@
 // import { SongRadioPlaylistItems } from "../SongRadioPlaylistItems/SongRadioPlaylistItems";
 
 import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
+import { SongRadioPlaylistItems } from "../SongRadioPlaylistItems/SongRadioPlaylistItems";
 
 export function SongRadioPlaylist({ playedSongsList }) {
-	const songRadioPlaylistItems = playedSongsList.map(
-		(SongRadioPlaylistItem) => (
-			<div>
-				<ul>
-					<li key={SongRadioPlaylistItem.id}>
-						<img
-							src={SongRadioPlaylistItem.album.images[2].url}
-							alt="cover art for the album"
-						/>
-						{SongRadioPlaylistItem.name}
-						{SongRadioPlaylistItem.artists[0].name}
-						{SongRadioPlaylistItem.album.name}
-						{convertFromMsToSec(SongRadioPlaylistItem.duration_ms)}
-					</li>
-				</ul>
-			</div>
-		)
+	return (
+		<>
+			<div className="bg-slate-3	00 mt-80">layout on the top</div>
+			<SongRadioPlaylistItems playedSongsList={playedSongsList} />
+		</>
 	);
-
-	return <ul> {songRadioPlaylistItems} </ul>;
 }

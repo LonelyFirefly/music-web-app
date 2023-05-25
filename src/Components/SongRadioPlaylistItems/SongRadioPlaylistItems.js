@@ -2,12 +2,12 @@ import { SongRadioPlaylistItem } from "../SongRadioPlaylistItem/SongRadioPlaylis
 
 export function SongRadioPlaylistItems({ playedSongsList }) {
 	return (
-		<ul>
-			<SongRadioPlaylistItem />
-			<SongRadioPlaylistItem />
-			<SongRadioPlaylistItem />
-			<SongRadioPlaylistItem />
-			<SongRadioPlaylistItem />
-		</ul>
+		<div className="bg-song-dark">
+			<ol>
+				{playedSongsList.map((song) => (
+					<SongRadioPlaylistItem song={song} key={song.id} />
+				))}
+			</ol>
+		</div>
 	);
 }
