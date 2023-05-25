@@ -3,7 +3,7 @@ import { Logo } from "../Logo/Logo";
 
 export function Menu() {
 	return (
-		<nav className="z-10 bg-slate-950 w-1/7 min-w-min flex flex-col text-xl font-bold">
+		<nav className="z-10 bg-slate-950 w-1/6 min-w-min flex flex-col text-xl font-bold">
 			<Logo
 				src="images/dark-theme/icon-dark-theme-logo.png"
 				logoName="SpotifyLogo"

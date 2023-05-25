@@ -8,36 +8,14 @@ export function SongRadioPlaylistItem({ song, key, index }) {
 	const artistName = song.artists[0].name;
 	const albumName = song.album.name;
 	const songDuration = convertFromMsToSec(song.duration_ms);
-	// return (
-	// 	<li>
-	// 		<div className="grid grid-cols-6 pt-2.5 px-5 pb-1.5 align-middle text-xs font-normal text-gray-400">
-	// 			<div className="col-span-3 flex gap-3.5">
-	// 				<img
-	// 					alt="album cover"
-	// 					src={albumCoverUrl}
-	// 					className="w-9 h-fit self-center"
-	// 				/>
-	// 				<div>
-	// 					<p className="text-sm font-semibold text-white">
-	// 						{songName}
-	// 					</p>
-	// 					<p>{artistName}</p>
-	// 				</div>
-	// 			</div>
-	// 			<p> {albumName} </p>
-	// 			<p>date added</p>
-	// 			<p> {convertFromMsToSec(songDuration)} </p>
-	// 		</div>
-	// 	</li>
-	// );
 	return (
-		<tr key={song.id}>
-			<td>{index + 1}</td>
-			<td className="flex gap-4">
+		<div className="flex px-5 pt-2.5 pb-1.5">
+			<div className="flex w-1/2">
+				<p className="self-center pr-3.5"> {index} </p>
 				<img
 					alt="album cover"
 					src={albumCoverUrl}
-					className="w-9 h-fit self-center"
+					className="w-11 h-fit self-center pr-3.5"
 				/>
 				<div>
 					<p className="text-sm font-semibold text-white">
@@ -45,10 +23,31 @@ export function SongRadioPlaylistItem({ song, key, index }) {
 					</p>
 					<p>{artistName}</p>
 				</div>
-			</td>
-			<td>{albumName}</td>
-			<td> date added </td>
-			<td>{songDuration}</td>
-		</tr>
+			</div>
+			<p className="w-1/6"> {albumName} </p>
+			<p className="w-1/6">date added</p>
+			<p className="w-1/6"> {convertFromMsToSec(songDuration)} </p>
+		</div>
 	);
+	// return (
+	// 	<tr key={song.id} className="mx-5 mt-2.5 mb-10">
+	// 		<td>{index + 1}</td>
+	// 		<td className="flex gap-4">
+	// 			<img
+	// 				alt="album cover"
+	// 				src={albumCoverUrl}
+	// 				className="w-9 h-fit self-center"
+	// 			/>
+	// 			<div>
+	// 				<p className="text-sm font-semibold text-white">
+	// 					{songName}
+	// 				</p>
+	// 				<p>{artistName}</p>
+	// 			</div>
+	// 		</td>
+	// 		<td>{albumName}</td>
+	// 		<td> date added </td>
+	// 		<td>{songDuration}</td>
+	// 	</tr>
+	// );
 }
