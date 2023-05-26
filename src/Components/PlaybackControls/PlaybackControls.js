@@ -9,7 +9,7 @@ export function PlaybackControls({ trackDuration }) {
 	}
 
 	return (
-		<div className="flex flex-col justify-center align-middle py-3">
+		<div className="flex flex-col justify-center items-center py-3">
 			<div className="flex justify-center align-middle">
 				<img
 					alt="shuffle-icon"

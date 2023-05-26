@@ -9,7 +9,7 @@ export function SongControls() {
 	const muteIconAltText = isMuted ? "icon-mute" : "icon-unmute";
 
 	return (
-		<div className="flex h-8 min-h-max w-fit">
+		<div className="flex h-8 min-h-max w-fit items-center">
 			<img
 				alt="icon-lyrics"
 				src="/images/dark-theme/icon-dark-theme-lyrics.svg"

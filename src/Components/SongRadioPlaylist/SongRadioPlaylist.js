@@ -5,9 +5,10 @@ import { SongRadioPlaylistItems } from "../SongRadioPlaylistItems/SongRadioPlayl
 
 export function SongRadioPlaylist({ playedSongsList }) {
 	return (
-		<>
+		<div className="w-screen">
 			<div className="bg-slate-3	00 mt-80">layout on the top</div>
 			<SongRadioPlaylistItems playedSongsList={playedSongsList} />
-		</>
+		</div>
 	);
 }
+	
