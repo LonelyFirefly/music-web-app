@@ -1,5 +1,5 @@
 import { PlaybackControls } from "../PlaybackControls/PlaybackControls";
-import { SongControls } from "../SongControls/SongControls ";
+import { SongControls } from "../SongControls/SongControls";
 import { SongDetails } from "../SongDetails/SongDetails";
 
 export function MusicPlayerPanel({
