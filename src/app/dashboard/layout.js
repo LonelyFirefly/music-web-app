@@ -22,7 +22,7 @@ const trackDuration = playedSongsList[0].duration_ms;
 
 export default function DashboardLayout({ children }) {
 	return (
-		<section className="flex w-screen max-h-min">
+		<section className="flex">
 			<Sidebar />
 			{/* shared UI */}
 			<div>
