@@ -1,4 +1,4 @@
-import { RecentlyPlayedSongs } from "@/src/Components/RecentlyPlayedSongs/RecentlyPlayedSongs";
+import { RecentlyPlayedSongs } from "@/src/Components/RecentlyPlayedSongs/RecentlyPlayedSongs.js";
 import { playedSongsList } from "@/FakeData/playedSongsList";
 
 export default function Page() {
