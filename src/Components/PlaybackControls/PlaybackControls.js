@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { SpotifyPlayer } from "../SpotifyPlayer/SpotifyPlayer";
 
 export function PlaybackControls({ trackDuration }) {
 	const [isPlaying, setIsPlaying] = useState(false);
+	const token = "YOUR_ACCESS_TOKEN";
+	const uris = ["11dFghVXANMlKmJXsNCbNl", "11dFghVXANMlKmJXsNCbNl"];
 
 	function handleClick() {
 		setIsPlaying(!isPlaying);
@@ -31,6 +34,10 @@ export function PlaybackControls({ trackDuration }) {
 					className="w-14 hover:cursor-pointer"
 					onClick={handleClick}
 				/>
+				{/* <SpotifyPlayer
+					token="BQDytZTA70r5OtRHtsGKEaym_QyCkHRdf3g-f7-UrCWP2KlTD9Y_b1L0cKPLsrL9lqqmg24mucQgv0n7eqWwX9ks17nNT1IvQ1j24tWdCvWPfUUlzybOb5CSRNCysijmMgAUTWdcWlYFN7P_VFQjhdb8nbAf6lDwdk8azkFsKPO-mxmXFktggn0MeOTZlD19S1dtK1gDPYovEcouFU-chovEbSX-"
+					uris={uris}
+				/> */}
 
 				<img
 					alt="next-icon"
