@@ -1,6 +1,9 @@
-export function SongDetails({ songName, songArtistName, songAlbumCoverImg }) {
-	songArtistName = "somebody";
-	songName = "some";
+import { SongContext } from "@/Contexts/SongContext";
+import { useContext } from "react";
+
+export function SongDetails() {
+	const { songName, songArtistName, songAlbumCoverImg } =
+		useContext(SongContext);
 	return (
 		<div className="flex gap-x-5 items-center">
 			<img alt="song album cover" />

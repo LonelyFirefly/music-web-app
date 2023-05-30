@@ -29,25 +29,4 @@ export function SongRadioPlaylistItem({ song, key, index }) {
 			<p className="w-1/6"> {convertFromMsToSec(songDuration)} </p>
 		</div>
 	);
-	// return (
-	// 	<tr key={song.id} className="mx-5 mt-2.5 mb-10">
-	// 		<td>{index + 1}</td>
-	// 		<td className="flex gap-4">
-	// 			<img
-	// 				alt="album cover"
-	// 				src={albumCoverUrl}
-	// 				className="w-9 h-fit self-center"
-	// 			/>
-	// 			<div>
-	// 				<p className="text-sm font-semibold text-white">
-	// 					{songName}
-	// 				</p>
-	// 				<p>{artistName}</p>
-	// 			</div>
-	// 		</td>
-	// 		<td>{albumName}</td>
-	// 		<td> date added </td>
-	// 		<td>{songDuration}</td>
-	// 	</tr>
-	// );
 }

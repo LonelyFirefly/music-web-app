@@ -1,6 +1,9 @@
+import { SongContext } from "@/Contexts/SongContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useContext } from "react";
 
 export function SongRadioPlaylistDetails() {
+	const { isPlaying, isLiked } = useContext(SongContext);
 	const pathNameSongRadio = usePathname();
 	const searchParamsImagePath = useSearchParams().get("image");
 	console.log(
@@ -55,16 +58,30 @@ export function SongRadioPlaylistDetails() {
 				</div>
 			</div>
 			<div className="flex gap-6">
-				<img alt="Play" src="/images/default/icon-default-play.svg" />
-				<img alt="Pause" src="/images/default/icon-default-pause.svg" />
-				<img
-					alt="like"
-					src="/images/dark-theme/icon-dark-theme-like.svg"
-				/>
-				<img
-					alt="liked"
-					src="/images/dark-theme/icon-dark-theme-liked.svg"
-				/>
+				{isPlaying ? (
+					<img
+						alt="Pause"
+						src="/images/default/icon-default-pause.svg"
+					/>
+				) : (
+					<img
+						alt="Play"
+						src="/images/default/icon-default-play.svg"
+					/>
+				)}
+
+				{isLiked ? (
+					<img
+						alt="liked"
+						src="/images/dark-theme/icon-dark-theme-liked.svg"
+					/>
+				) : (
+					<img
+						alt="like"
+						src="/images/dark-theme/icon-dark-theme-like.svg"
+					/>
+				)}
+
 				<img
 					alt="Options"
 					src="/images/default/icon-default-options.svg"

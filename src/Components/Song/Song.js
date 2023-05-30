@@ -1,4 +1,5 @@
 import { playedSongsList } from "@/FakeData/playedSongsList";
+import Link from "next/link";
 
 export function Song() {
 	let songName = playedSongsList[0].name;

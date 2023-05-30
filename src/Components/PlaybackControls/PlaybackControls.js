@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { SpotifyPlayer } from "../SpotifyPlayer/SpotifyPlayer";
+import { SongContext } from "@/Contexts/SongContext";
 
-export function PlaybackControls({ trackDuration }) {
-	const [isPlaying, setIsPlaying] = useState(false);
+export function PlaybackControls() {
+	const { isPlaying, setIsPlaying, trackDuration } = useContext(SongContext);
 	const token = "YOUR_ACCESS_TOKEN";
 	const uris = ["11dFghVXANMlKmJXsNCbNl", "11dFghVXANMlKmJXsNCbNl"];
 
