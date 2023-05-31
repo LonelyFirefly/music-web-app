@@ -1,16 +1,30 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export function SongRadioPlaylistDetails() {
-	const { isPlaying, isLiked } = useContext(SongContext);
+	const { optionsVisible, setOptionsVisible } = useState(false);
+	const { isPlaying, setIsPlaying, setIsLiked, isLiked, songName } =
+		useContext(SongContext);
 	const pathNameSongRadio = usePathname();
 	const searchParamsImagePath = useSearchParams().get("image");
 	console.log(
 		`Pathname: ${pathNameSongRadio}; searchParamsImagePath: ${searchParamsImagePath}`
 	);
+
+	function handlePlayClick() {
+		setIsPlaying(!isPlaying);
+	}
+
+	function handleLikeClick() {
+		setIsLiked(!isLiked);
+	}
+
+	function handleOptionsClick() {
+		setOptionsVisible(!optionsVisible);
+	}
+
 	let userName = "userName";
-	let songName = "songName";
 	let nothing = "nothing";
 	let artists = [
 		{
@@ -57,32 +71,27 @@ export function SongRadioPlaylistDetails() {
 					</div>
 				</div>
 			</div>
-			<div className="flex gap-6">
-				{isPlaying ? (
-					<img
-						alt="Pause"
-						src="/images/default/icon-default-pause.svg"
-					/>
-				) : (
-					<img
-						alt="Play"
-						src="/images/default/icon-default-play.svg"
-					/>
-				)}
-
-				{isLiked ? (
-					<img
-						alt="liked"
-						src="/images/dark-theme/icon-dark-theme-liked.svg"
-					/>
-				) : (
-					<img
-						alt="like"
-						src="/images/dark-theme/icon-dark-theme-like.svg"
-					/>
-				)}
+			<div className="flex">
+				<img
+					onClick={handlePlayClick}
+					className="hover:cursor-pointer"
+					alt={isPlaying ? "Pause" : "Play"}
+					src={`/images/default/icon-default-${
+						isPlaying ? "pause" : "play"
+					}.svg`}
+				/>
 
 				<img
+					onClick={handleLikeClick}
+					className="w-12 hover:cursor-pointer mr-6"
+					alt={isLiked ? "liked" : "like"}
+					src={`/images/dark-theme/icon-dark-theme-${
+						isLiked ? "liked" : "like"
+					}.svg`}
+				/>
+
+				<img
+					onClick={handleOptionsClick}
 					alt="Options"
 					src="/images/default/icon-default-options.svg"
 				/>

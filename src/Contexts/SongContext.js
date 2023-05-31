@@ -20,6 +20,7 @@ export const SongContextProvider = ({ children }) => {
 				isPlaying,
 				setIsPlaying,
 				isLiked,
+				setIsLiked,
 				songName,
 				songArtistName,
 				songAlbumCoverImg,
