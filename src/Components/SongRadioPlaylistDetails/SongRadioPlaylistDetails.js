@@ -1,11 +1,10 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
+import { Like } from "../Like/Like";
 
 export function SongRadioPlaylistDetails() {
-	const { optionsVisible, setOptionsVisible } = useState(false);
-	const { isPlaying, setIsPlaying, setIsLiked, isLiked, songName } =
-		useContext(SongContext);
+	const { isPlaying, setIsPlaying, songName } = useContext(SongContext);
 	const pathNameSongRadio = usePathname();
 	const searchParamsImagePath = useSearchParams().get("image");
 	console.log(
@@ -16,23 +15,15 @@ export function SongRadioPlaylistDetails() {
 		setIsPlaying(!isPlaying);
 	}
 
-	function handleLikeClick() {
-		setIsLiked(!isLiked);
-	}
-
-	function handleOptionsClick() {
-		setOptionsVisible(!optionsVisible);
-	}
-
 	let userName = "userName";
 	let nothing = "nothing";
 	let artists = [
 		{
-			name: "Fucker",
+			name: "artist",
 			id: 0,
 		},
 		{
-			name: "Fucker",
+			name: "artist",
 			id: 1,
 		},
 	];
@@ -80,21 +71,7 @@ export function SongRadioPlaylistDetails() {
 						isPlaying ? "pause" : "play"
 					}.svg`}
 				/>
-
-				<img
-					onClick={handleLikeClick}
-					className="w-12 hover:cursor-pointer mr-6"
-					alt={isLiked ? "liked" : "like"}
-					src={`/images/dark-theme/icon-dark-theme-${
-						isLiked ? "liked" : "like"
-					}.svg`}
-				/>
-
-				<img
-					onClick={handleOptionsClick}
-					alt="Options"
-					src="/images/default/icon-default-options.svg"
-				/>
+				<Like width={12} />
 			</div>
 		</div>
 	);

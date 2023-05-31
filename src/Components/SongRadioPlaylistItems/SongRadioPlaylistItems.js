@@ -27,31 +27,4 @@ export function SongRadioPlaylistItems({ playedSongsList }) {
 			))}
 		</div>
 	);
-	// return (
-	// 	<table className="bg-song-dark w-full ">
-	// 		<thead>
-	// 			<tr className="text-left">
-	// 				<th>#</th>
-	// 				<th>Title</th>
-	// 				<th>Album</th>
-	// 				<th>Date Added</th>
-	// 				<th>
-	// 					<img
-	// 						alt="duration icon"
-	// 						src="/images/dark-theme/icon-dark-theme-duration.svg"
-	// 					/>
-	// 				</th>
-	// 			</tr>
-	// 		</thead>
-	// 		<tbody>
-	// 			{playedSongsList.map((song, index) => (
-	// 				<SongRadioPlaylistItem
-	// 					song={song}
-	// 					key={song.id}
-	// 					index={index}
-	// 				/>
-	// 			))}
-	// 		</tbody>
-	// 	</table>
-	// );
 }

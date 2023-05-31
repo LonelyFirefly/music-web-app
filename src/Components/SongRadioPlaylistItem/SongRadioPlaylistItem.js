@@ -1,7 +1,9 @@
 import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
 import { getSmallestImageFromAlbum } from "@/utils/getSmallestImageFromAlbum";
+import { useState } from "react";
 
 export function SongRadioPlaylistItem({ song, key, index }) {
+	const { isPlaying, setIsPlaying } = useState(false);
 	const albumImages = song.album.images;
 	const albumCoverUrl = getSmallestImageFromAlbum(albumImages).url;
 	const songName = song.name;
@@ -11,7 +13,22 @@ export function SongRadioPlaylistItem({ song, key, index }) {
 	return (
 		<div className="flex px-5 pt-2.5 pb-1.5">
 			<div className="flex w-1/2">
-				<p className="self-center pr-3.5"> {index} </p>
+				<div className="self-center pr-3.5">
+					{isPlaying ? (
+						<img
+							className="hidden hover:block"
+							alt="pause-arrow"
+							src="/images/dark-theme/icon-dark-theme-pause-arrow.svg"
+						/>
+					) : (
+						<img
+							className="hidden hover:block"
+							alt="play-arrow"
+							src="/images/dark-theme/icon-dark-theme-play-arrow.svg"
+						/>
+					)}
+					<span className="hover:hidden">{index}</span>
+				</div>
 				<img
 					alt="album cover"
 					src={albumCoverUrl}
@@ -26,7 +43,7 @@ export function SongRadioPlaylistItem({ song, key, index }) {
 			</div>
 			<p className="w-1/6"> {albumName} </p>
 			<p className="w-1/6">date added</p>
-			<p className="w-1/6"> {convertFromMsToSec(songDuration)} </p>
+			<div className="w-1/6"> {convertFromMsToSec(songDuration)} </div>
 		</div>
 	);
 }

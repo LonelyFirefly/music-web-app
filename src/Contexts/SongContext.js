@@ -7,7 +7,7 @@ export const SongContext = createContext();
 
 const songName = playedSongsList[0].name;
 const songArtistName = playedSongsList[0].artists[0].name;
-const songAlbumCoverImg = playedSongsList[0].album.name;
+const songAlbumCoverImg = playedSongsList[0].album.images[0].url;
 const trackDuration = playedSongsList[0].duration_ms;
 
 export const SongContextProvider = ({ children }) => {
