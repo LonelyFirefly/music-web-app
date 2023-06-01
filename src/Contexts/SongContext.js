@@ -12,15 +12,21 @@ const trackDuration = playedSongsList[0].duration_ms;
 
 export const SongContextProvider = ({ children }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
-	const [isLiked, setIsLiked] = useState(false);
+	// const [isLiked, setIsLiked] = useState(false);
+	const [currentSong, setCurrentSong] = useState(null);
+	const [likedSongs, setLikedSongs] = useState([]);
 
 	return (
 		<SongContext.Provider
 			value={{
 				isPlaying,
 				setIsPlaying,
-				isLiked,
-				setIsLiked,
+				// isLiked,
+				// setIsLiked,
+				likedSongs,
+				setLikedSongs,
+				currentSong,
+				setCurrentSong,
 				songName,
 				songArtistName,
 				songAlbumCoverImg,

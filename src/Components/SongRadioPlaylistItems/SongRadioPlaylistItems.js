@@ -2,15 +2,15 @@ import { SongRadioPlaylistItem } from "../SongRadioPlaylistItem/SongRadioPlaylis
 
 export function SongRadioPlaylistItems({ playedSongsList }) {
 	return (
-		<div className="flex flex-col lign-middle justify-between px-11 text-xs font-normal text-gray-400 bg-song-dark">
+		<div className="flex flex-col align-middle justify-between px-5 text-xs font-normal text-gray-400 bg-song-dark">
 			<div className="flex px-5 pt-2.5 pb-1.5">
 				<div className="flex w-1/2">
-					<span className="self-center pr-3.5">#</span>
+					<span className="self-center mr-3.5 w-4">#</span>
 					<span>Title</span>
 				</div>
 				<span className="w-1/6">Album</span>
 				<span className="w-1/6">Date Added</span>
-				<div className="w-1/6">
+				<div className="w-1/6 pl-10">
 					<img
 						alt="duration icon"
 						src="/images/dark-theme/icon-dark-theme-duration.svg"
