@@ -1,11 +1,22 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { useContext } from "react";
 
-export function Like({ width }) {
-	const { setIsLiked, isLiked } = useContext(SongContext);
+export function Like({ width, songId }) {
+	const { currentSong, setCurrentSong, likedSongs, setLikedSongs } =
+		useContext(SongContext);
+
+	let isLiked = likedSongs.includes(songId);
 
 	function handleClick() {
-		setIsLiked(!isLiked);
+		setLikedSongs((prevLikedSongs) => {
+			if (prevLikedSongs.includes(songId)) {
+				isLiked = true;
+				return prevLikedSongs.filter((id) => id !== songId);
+			} else {
+				isLiked = false;
+				return [...prevLikedSongs, songId];
+			}
+		});
 	}
 
 	return (
