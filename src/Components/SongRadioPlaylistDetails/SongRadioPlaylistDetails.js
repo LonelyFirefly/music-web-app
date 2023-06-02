@@ -1,7 +1,8 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useState } from "react";
-import { Like } from "../Like/Like";
+import { LikeSong } from "../LikeSong/LikeSong";
+import { LikeAlbum } from "../LikeAlbum/LikeAlbum";
 
 export function SongRadioPlaylistDetails() {
 	const { isPlaying, setIsPlaying, songName } = useContext(SongContext);
@@ -71,7 +72,7 @@ export function SongRadioPlaylistDetails() {
 						isPlaying ? "pause" : "play"
 					}.svg`}
 				/>
-				<Like width={12} />
+				<LikeAlbum />
 			</div>
 		</div>
 	);

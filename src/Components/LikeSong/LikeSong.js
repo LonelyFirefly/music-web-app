@@ -1,9 +1,14 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { useContext } from "react";
 
-export function Like({ width, songId }) {
-	const { currentSong, setCurrentSong, likedSongs, setLikedSongs } =
-		useContext(SongContext);
+export function LikeSong({ width, songId }) {
+	const {
+		currentSongId,
+		setCurrentSongId,
+		likedSongs,
+		setLikedSongs,
+		radioSongs,
+	} = useContext(SongContext);
 
 	let isLiked = likedSongs.includes(songId);
 

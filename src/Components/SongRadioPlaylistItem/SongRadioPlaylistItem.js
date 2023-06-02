@@ -2,14 +2,14 @@ import { SongContext } from "@/Contexts/SongContext";
 import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
 import { getSmallestImageFromAlbum } from "@/utils/getSmallestImageFromAlbum";
 import { useContext, useState } from "react";
-import { Like } from "../Like/Like";
+import { LikeSong } from "../LikeSong/LikeSong";
 
 export function SongRadioPlaylistItem({ song, index }) {
-	const { currentSong, setCurrentSong, isPlaying, setIsPlaying } =
+	const { currentSongId, setCurrentSongId, isPlaying, setIsPlaying } =
 		useContext(SongContext);
 
 	function handleClick() {
-		setCurrentSong(song.id);
+		setCurrentSongId(song.id);
 		setIsPlaying(!isPlaying);
 	}
 
@@ -26,7 +26,7 @@ export function SongRadioPlaylistItem({ song, index }) {
 					<div
 						className=" w-8 cursor-pointer pr-5"
 						onClick={handleClick}>
-						{isPlaying & (song.id === currentSong) ? (
+						{isPlaying & (song.id === currentSongId) ? (
 							<img
 								alt="pause-arrow"
 								src="/images/dark-theme/icon-dark-theme-pause-arrow.svg"
@@ -55,7 +55,7 @@ export function SongRadioPlaylistItem({ song, index }) {
 			<p className="w-1/6"> {albumName} </p>
 			<p className="w-1/6">date added</p>
 			<div className="w-1/6 flex">
-				<Like width={4} songId={song.id} />
+				<LikeSong width={4} songId={song.id} />
 				{convertFromMsToSec(songDuration)}
 			</div>
 		</div>
