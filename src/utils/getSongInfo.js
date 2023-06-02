@@ -2,7 +2,7 @@ import { SongContext } from "@/Contexts/SongContext";
 import { useContext } from "react";
 
 export function getSongInfo() {
-	// returns the info as an object from a radio Songs array
+	// returns 1 object(song) from an array of Obejct(songs) based on the song's ID
 	const { radioSongs, currentSongId } = useContext(SongContext);
 
 	let songName,
