@@ -21,7 +21,7 @@ export function SongDetails() {
 				<span className="font-bold text-base"> {songName} </span>
 				<span className="text-xs"> {songArtistName} </span>
 			</div>
-			<LikeSong width={7} />
+			<LikeSong width={7} songId={currentSongId} />
 		</div>
 	);
 }

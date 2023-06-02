@@ -5,12 +5,6 @@ import { playedSongsList } from "@/FakeData/playedSongsList";
 
 export const SongContext = createContext();
 
-const songName = playedSongsList[0].name;
-const songArtistName = playedSongsList[0].artists[0].name;
-const songAlbumCoverImg = playedSongsList[0].album.images[0].url;
-const trackDuration = playedSongsList[0].duration_ms;
-const songId = playedSongsList[0].id;
-
 const radioSongs = playedSongsList.map((song) => ({
 	songName: song.name,
 	songArtistName: song.artists[0].name,
@@ -20,7 +14,10 @@ const radioSongs = playedSongsList.map((song) => ({
 	isLiked: "false",
 }));
 
-const firstSongId = radioSongs[0].songId;
+console.log("RadioSongs Array");
+console.log(radioSongs);
+
+const firstSongId = radioSongs[1].songId;
 
 export const SongContextProvider = ({ children }) => {
 	const [isPlaying, setIsPlaying] = useState(false);
