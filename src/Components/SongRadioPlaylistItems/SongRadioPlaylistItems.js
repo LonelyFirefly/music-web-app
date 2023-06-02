@@ -8,9 +8,8 @@ export function SongRadioPlaylistItems({ playedSongsList }) {
 					<span className="self-center mr-3.5 w-4">#</span>
 					<span>Title</span>
 				</div>
-				<span className="w-1/6">Album</span>
-				<span className="w-1/6">Date Added</span>
-				<div className="w-1/6 pl-10">
+				<span className="w-1/4">Album</span>
+				<div className="w-1/4 pl-10">
 					<img
 						alt="duration icon"
 						src="/images/dark-theme/icon-dark-theme-duration.svg"
