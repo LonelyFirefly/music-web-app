@@ -1,14 +1,12 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { useContext } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
+import { getSongInfo } from "@/utils/getSongInfo";
 
 export function SongDetails() {
-	const { radioSongs, currentSongId } = useContext(SongContext);
+	const { currentSongId } = useContext(SongContext);
 
-	// take the current song's name, album cover and artist name
-	const { songName, songAlbumCoverImg, songArtistName } = radioSongs.filter(
-		(song) => song.songId === currentSongId
-	)[0];
+	const { songName, songAlbumCoverImg, songArtistName } = getSongInfo();
 
 	return (
 		<div className="flex gap-x-5 items-center">
