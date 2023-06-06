@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { SongRadioPlaylistItem } from "../SongRadioPlaylistItem/SongRadioPlaylistItem";
+import { SongContext } from "@/Contexts/SongContext";
 
 export function SongRadioPlaylistItems({ playedSongsList }) {
+	const { radioSongs } = useContext(SongContext);
+	// console.log(radioSongs);
+
 	return (
 		<div className="flex flex-col align-middle justify-between px-5 text-xs font-normal text-gray-400 bg-song-dark">
 			<div className="flex px-5 pt-2.5 pb-1.5">
@@ -17,12 +22,8 @@ export function SongRadioPlaylistItems({ playedSongsList }) {
 					/>
 				</div>
 			</div>
-			{playedSongsList.map((song, index) => (
-				<SongRadioPlaylistItem
-					song={song}
-					key={song.id}
-					index={index + 1}
-				/>
+			{radioSongs.map((song, index) => (
+				<SongRadioPlaylistItem song={song} key={song.id} />
 			))}
 		</div>
 	);

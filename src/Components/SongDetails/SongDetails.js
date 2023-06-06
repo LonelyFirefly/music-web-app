@@ -1,12 +1,13 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { useContext } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
-import { getSongInfo } from "@/utils/getSongInfo";
 
 export function SongDetails() {
-	const { currentSongId } = useContext(SongContext);
+	const { currentSongId, radioSongs } = useContext(SongContext);
 
-	const { songName, songAlbumCoverImg, songArtistName } = getSongInfo();
+	const { songName, songAlbumCoverImg, songArtistName } = radioSongs.find(
+		(song) => song.songId === currentSongId
+	);
 
 	return (
 		<div className="flex gap-x-5 items-center">

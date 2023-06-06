@@ -9,13 +9,14 @@ const radioSongs = playedSongsList.map((song) => ({
 	songName: song.name,
 	songArtistName: song.artists[0].name,
 	songAlbumCoverImg: song.album.images[0].url,
+	songAlbumName: song.album.name,
 	trackDuration: song.duration_ms,
 	songId: song.id,
 	isLiked: "false",
 }));
 
-console.log("RadioSongs Array");
-console.log(radioSongs);
+// console.log("RadioSongs Array");
+// console.log(radioSongs);
 
 const firstSongId = radioSongs[1].songId;
 
@@ -24,7 +25,7 @@ export const SongContextProvider = ({ children }) => {
 	// const [isLiked, setIsLiked] = useState(false);
 	const [currentSongId, setCurrentSongId] = useState(firstSongId);
 	const [likedSongs, setLikedSongs] = useState([]);
-	console.log(likedSongs);
+	// console.log(likedSongs);
 
 	return (
 		<SongContext.Provider
