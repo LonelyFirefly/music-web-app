@@ -1,11 +1,25 @@
 import { convertFromMsToSec } from "@/utils/convertFromMsToSec";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import { SongContext } from "@/Contexts/SongContext";
 
-export function ProgressBar({ trackDuration, isPlaying, setIsPlaying }) {
+export function ProgressBar({ isPlaying, setIsPlaying }) {
 	const [currentTime, setCurrentTime] = useState(0);
-	const duration = trackDuration;
+	const { radioSongs, currentSongId } = useContext(SongContext);
+
+	const duration = radioSongs.find(
+		(song) => song.songId === currentSongId
+	).trackDuration;
+	// console.log(duration);
+
+	// const duration = trackDuration;
 	const progress = ((currentTime / duration) * 100).toFixed(2);
+	const durationInSeconds = Math.floor(duration / 1000);
+	const minutes = Math.floor(durationInSeconds / 60);
+	const seconds = durationInSeconds % 60;
+	const formattedDuration = `${minutes}:${
+		seconds < 10 ? "0" : ""
+	}${Math.floor(seconds)}`;
 
 	useEffect(() => {
 		let interval = null;
@@ -24,8 +38,8 @@ export function ProgressBar({ trackDuration, isPlaying, setIsPlaying }) {
 			<progress
 				className={styles.progress}
 				value={currentTime}
-				max={duration}></progress>
-			<span> {convertFromMsToSec(duration)} </span>
+				max={durationInSeconds}></progress>
+			<span> {formattedDuration} </span>
 		</div>
 	);
 }
