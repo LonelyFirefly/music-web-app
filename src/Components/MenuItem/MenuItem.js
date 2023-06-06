@@ -1,10 +1,14 @@
+import Link from "next/link";
+
 export function MenuItem({ children, imgSrc, imgAlt }) {
+	function handleClick() {}
+
+	const pathName = imgAlt === "Home" ? "/dashboard" : "/search";
+
 	return (
-		<div>
+		<Link href={pathName} shallow>
 			<img alt={imgAlt} src={imgSrc} className="w-5 inline-block" />
-			<a className="pl-6" href="#">
-				{children}
-			</a>
-		</div>
+			<span className="pl-6">{children}</span>
+		</Link>
 	);
 }
