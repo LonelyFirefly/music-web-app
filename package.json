@@ -12,7 +12,6 @@
 	"dependencies": {
 		"@mdi/js": "^7.2.96",
 		"curl": "^0.1.4",
-		"eslint": "8.40.0",
 		"mdi-react": "^9.2.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -20,7 +19,10 @@
 		"tailwindcss-pseudo-elements": "^2.0.0"
 	},
 	"devDependencies": {
+		"@next/eslint-plugin-next": "^13.4.4",
 		"autoprefixer": "^10.4.14",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^8.42.0",
 		"eslint-config-next": "^13.4.4",
 		"next": "^13.4.4",
 		"postcss": "^8.4.23",
