@@ -35,7 +35,7 @@ export function SongRadioPlaylistDetails() {
 				<img
 					alt="album cover"
 					src={searchParamsImagePath}
-					className="h-[26vh] min-h-fit "
+					className="h-[26vh] min-h-fit"
 				/>
 				<div className="flex flex-col gap-3">
 					<p className="font-bold text-xs">Playlist</p>
