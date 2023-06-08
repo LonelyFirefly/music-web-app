@@ -1,6 +1,3 @@
-"use client";
-
-import { SongContextProvider } from "@/Contexts/SongContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
@@ -15,9 +12,7 @@ export default function RootLayout({ children }) {
 	return (
 		// as a root layout, it should contain html and body tags
 		<html lang="en">
-			<body className={inter.className}>
-				<SongContextProvider>{children}</SongContextProvider>
-			</body>
+			<body className={inter.className}>{children}</body>
 		</html>
 	);
 }
