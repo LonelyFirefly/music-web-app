@@ -6,6 +6,9 @@ import { LikeAlbum } from "../LikeAlbum/LikeAlbum";
 
 // https://open.spotify.com/artist/0qT79UgT5tY4yudH9VfsdT?si=BbVUo51qSIuMayWBmPBGBg
 
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
+
 async function getAccessToken() {
 	const res = await fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
@@ -14,8 +17,8 @@ async function getAccessToken() {
 		},
 		body: new URLSearchParams({
 			grant_type: "client_credentials",
-			client_id: "8da9ef4ee3d3438b9295a953325597af",
-			client_secret: "108820275ac9482e98f484b5dcd461dc",
+			client_id: client_id,
+			client_secret: client_secret,
 		}),
 	});
 
@@ -46,8 +49,10 @@ async function getArtist() {
 					console.log("ERROR !!!");
 					console.log(data.error.message);
 				}
+				s;
 				// Handle the response data here
 				console.log("Not Erorr");
+				s;
 				console.log(data);
 			} catch (error) {
 				console.log("Error in data");
