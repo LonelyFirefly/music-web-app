@@ -4,8 +4,6 @@ import { useContext, useState } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
 import { LikeAlbum } from "../LikeAlbum/LikeAlbum";
 
-// https://open.spotify.com/artist/0qT79UgT5tY4yudH9VfsdT?si=BbVUo51qSIuMayWBmPBGBg
-
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
@@ -27,44 +25,34 @@ async function getAccessToken() {
 	}
 
 	const data = await res.json();
-	console.log(`access token is ${data.expires_in}`);
+	// console.log(`access token is ${data.access_token}`);
+	console.log("expires in " + data.expires_in);
 	return data.access_token;
 }
 
 async function getArtist() {
-	const accessToken = await getAccessToken();
-	const res = await fetch(
-		"https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
-		{
-			method: "GET",
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	)
-		.then((response) => response.json())
-		.then((data) => {
-			try {
-				if (data.error) {
-					console.log("ERROR !!!");
-					console.log(data.error.message);
-				}
-				s;
-				// Handle the response data here
-				console.log("Not Erorr");
-				s;
-				console.log(data);
-			} catch (error) {
-				console.log("Error in data");
-				console.log(error);
+	try {
+		const accessToken = await getAccessToken();
+		console.log(accessToken);
+		const res = await fetch(
+			"https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
 			}
-		})
-		.catch((error) => {
-			// Handle any errors here
-			console.log("Error");
-			console.error(error);
-		});
-	return res;
+		);
+		const data = await res.json();
+		if (data.error) {
+			// console.log("data error");
+			// console.log(data.error.message);
+		} else {
+			return data;
+		}
+	} catch (error) {
+		// console.log("getArtist Error: " + error);
+	}
 }
 
 export function SongRadioPlaylistDetails() {
@@ -74,9 +62,11 @@ export function SongRadioPlaylistDetails() {
 	console.log(
 		`Pathname: ${pathNameSongRadio}; searchParamsImagePath: ${searchParamsImagePath}`
 	);
-	const artist = getArtist();
-	console.log("Artist:");
-	console.log(artist);
+	// const artist = getArtist();
+	// console.log("Artist:");
+	// console.log(artist);
+	getAccessToken();
+	getArtist();
 
 	function handlePlayClick() {
 		setIsPlaying(!isPlaying);

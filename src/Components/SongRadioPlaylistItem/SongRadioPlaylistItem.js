@@ -58,7 +58,7 @@ export function SongRadioPlaylistItem({ song }) {
 			</div>
 			<p className="w-1/4 truncate mr-6"> {songAlbumName} </p>
 			<div className="w-1/4 flex items-center">
-				<LikeSong width={4} songId={song.id} />
+				<LikeSong width={4} songId={song.songId} />
 				{convertFromMsToSec(trackDuration)}
 			</div>
 		</div>
