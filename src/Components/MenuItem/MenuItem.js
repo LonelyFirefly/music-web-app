@@ -3,7 +3,7 @@ import Link from "next/link";
 export function MenuItem({ children, imgSrc, imgAlt }) {
 	function handleClick() {}
 
-	const pathName = imgAlt === "Home" ? "/dashboard" : "/search";
+	const pathName = imgAlt === "Home" ? "/dashboard" : "/dashboard/search";
 
 	return (
 		<Link href={pathName} shallow>

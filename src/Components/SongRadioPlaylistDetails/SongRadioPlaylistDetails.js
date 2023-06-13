@@ -1,31 +1,37 @@
 import { SongContext } from "@/Contexts/SongContext";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
 import { LikeAlbum } from "../LikeAlbum/LikeAlbum";
 
-const client_id = process.env.CLIENT_ID;
-const client_secret = process.env.CLIENT_SECRET;
+const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
+const client_secret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
+
+// https://open.spotify.com/artist/0qT79UgT5tY4yudH9VfsdT?si=4_8uiBr-S5aAKHy7JJWm7w
 
 async function getAccessToken() {
+	const formData = new URLSearchParams();
+	formData.append("grant_type", "client_credentials");
+
 	const res = await fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
+			Authorization:
+				"Basic " +
+				new Buffer.from(client_id + ":" + client_secret).toString(
+					"base64"
+				),
 			"Content-Type": "application/x-www-form-urlencoded",
 		},
-		body: new URLSearchParams({
-			grant_type: "client_credentials",
-			client_id: client_id,
-			client_secret: client_secret,
-		}),
+		body: formData.toString(),
 	});
 
 	if (!res.ok) {
-		throw new Error("Failed to fetch data");
+		// console.log(res);
+		// throw new Error("Failed to fetch data");
 	}
 
 	const data = await res.json();
-	// console.log(`access token is ${data.access_token}`);
 	console.log("expires in " + data.expires_in);
 	return data.access_token;
 }
@@ -33,17 +39,17 @@ async function getAccessToken() {
 async function getArtist() {
 	try {
 		const accessToken = await getAccessToken();
-		console.log(accessToken);
 		const res = await fetch(
-			"https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg",
+			"https://api.spotify.com/v1/artists/0qT79UgT5tY4yudH9VfsdT ",
 			{
 				method: "GET",
 				headers: {
-					Authorization: `Bearer ${accessToken}`,
+					Authorization: "Bearer " + accessToken,
 				},
 			}
 		);
 		const data = await res.json();
+		// console.log(data);
 		if (data.error) {
 			// console.log("data error");
 			// console.log(data.error.message);
@@ -54,26 +60,30 @@ async function getArtist() {
 		// console.log("getArtist Error: " + error);
 	}
 }
-
 export function SongRadioPlaylistDetails() {
 	const { isPlaying, setIsPlaying, songName } = useContext(SongContext);
+	const [artist, setArtist] = useState(null);
 	const pathNameSongRadio = usePathname();
 	const searchParamsImagePath = useSearchParams().get("image");
 	console.log(
 		`Pathname: ${pathNameSongRadio}; searchParamsImagePath: ${searchParamsImagePath}`
 	);
-	// const artist = getArtist();
-	// console.log("Artist:");
-	// console.log(artist);
-	getAccessToken();
-	getArtist();
 
+	console.log(artist);
+
+	useEffect(() => {
+		const fetchArtist = async () => {
+			const data = await getArtist();
+			setArtist(data);
+		};
+
+		fetchArtist();
+	}, []);
 	function handlePlayClick() {
 		setIsPlaying(!isPlaying);
 	}
 
 	let userName = "userName";
-	let nothing = "nothing";
 	let artists = [
 		{
 			name: "artist",
