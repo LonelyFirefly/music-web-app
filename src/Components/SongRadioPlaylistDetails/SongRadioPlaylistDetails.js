@@ -1,65 +1,12 @@
 import { SongContext } from "@/Contexts/SongContext";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
 import { LikeAlbum } from "../LikeAlbum/LikeAlbum";
-
-const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
-const client_secret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
+import { getArtist } from "@/utils/getArtist";
 
 // https://open.spotify.com/artist/0qT79UgT5tY4yudH9VfsdT?si=4_8uiBr-S5aAKHy7JJWm7w
 
-async function getAccessToken() {
-	const formData = new URLSearchParams();
-	formData.append("grant_type", "client_credentials");
-
-	const res = await fetch("https://accounts.spotify.com/api/token", {
-		method: "POST",
-		headers: {
-			Authorization:
-				"Basic " +
-				new Buffer.from(client_id + ":" + client_secret).toString(
-					"base64"
-				),
-			"Content-Type": "application/x-www-form-urlencoded",
-		},
-		body: formData.toString(),
-	});
-
-	if (!res.ok) {
-		// console.log(res);
-		// throw new Error("Failed to fetch data");
-	}
-
-	const data = await res.json();
-	console.log("expires in " + data.expires_in);
-	return data.access_token;
-}
-
-async function getArtist() {
-	try {
-		const accessToken = await getAccessToken();
-		const res = await fetch(
-			"https://api.spotify.com/v1/artists/0qT79UgT5tY4yudH9VfsdT ",
-			{
-				method: "GET",
-				headers: {
-					Authorization: "Bearer " + accessToken,
-				},
-			}
-		);
-		const data = await res.json();
-		// console.log(data);
-		if (data.error) {
-			// console.log("data error");
-			// console.log(data.error.message);
-		} else {
-			return data;
-		}
-	} catch (error) {
-		// console.log("getArtist Error: " + error);
-	}
-}
 export function SongRadioPlaylistDetails() {
 	const { isPlaying, setIsPlaying, songName } = useContext(SongContext);
 	const [artist, setArtist] = useState(null);
