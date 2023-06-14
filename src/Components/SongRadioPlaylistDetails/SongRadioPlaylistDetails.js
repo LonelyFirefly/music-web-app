@@ -16,8 +16,6 @@ export function SongRadioPlaylistDetails() {
 		`Pathname: ${pathNameSongRadio}; searchParamsImagePath: ${searchParamsImagePath}`
 	);
 
-	console.log(artist);
-
 	useEffect(() => {
 		const fetchArtist = async () => {
 			const data = await getArtist();
@@ -26,6 +24,7 @@ export function SongRadioPlaylistDetails() {
 
 		fetchArtist();
 	}, []);
+
 	function handlePlayClick() {
 		setIsPlaying(!isPlaying);
 	}
