@@ -16,7 +16,7 @@ import {
 import Button from "@mui/material/Button";
 import { useRef, useState } from "react";
 
-export default function Page({ providers }) {
+export default function Page() {
 	const [emailError, setEmailError] = useState(false);
 	const [telError, setTelError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
