@@ -58,11 +58,12 @@ export default function Page() {
 	};
 
 	return (
-		<Container component="main" maxWidth="xs">
+		<Container component="main" maxWidth="xs" color="white">
 			<Box
 				sx={{
 					boxShadow: 3,
 					borderRadius: 2,
+					backgroundColor: "azure",
 					px: 4,
 					py: 6,
 					marginTop: 8,
@@ -72,7 +73,7 @@ export default function Page() {
 					color: "black",
 				}}>
 				<Typography component="h1" variant="h5">
-					Sign in
+					Log In to Spotify
 				</Typography>
 				<Box
 					component="form"
@@ -148,11 +149,11 @@ export default function Page() {
 						color="tertiary"
 						variant="filled"
 						sx={{ mt: 3, mb: 2 }}>
-						<span>Sign In</span>
+						<span>Log In</span>
 					</Button>
 					<Grid
 						container
-						spacing={2}
+						spacing={3}
 						direction="column"
 						justifyContent="center"
 						alignItems="center">
@@ -162,7 +163,8 @@ export default function Page() {
 							</Link>
 						</Grid>
 						<Grid item>
-							<Link href="#" variant="body2">
+							<hr />
+							<Link href="/signup" variant="body2">
 								Don't have an account? Sign up
 							</Link>
 						</Grid>

@@ -7,7 +7,7 @@ export function Button({ children, buttonColor }) {
 	return (
 		<button
 			className={`w-max px-6 py-3 my-2 font-bold mr-8 rounded-3xl ${buttonClass}`}>
-			<Link href={buttonText === "Log in" ? "login" : "signup"}>
+			<Link href={buttonText === "Log in" ? "/login" : "/signup"}>
 				{buttonText}
 			</Link>
 		</button>
