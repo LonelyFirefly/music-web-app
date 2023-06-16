@@ -8,9 +8,9 @@ export function Search() {
 	}
 
 	return (
-		<div className="justify-self-end">
+		<div className="justify-self-end z-20 text-sm relative min-w-full">
 			<input
-				className="max-w-full"
+				className="max-w-full rounded absolute right-64"
 				type="search"
 				placeholder="What do you want to listen to?"
 				value={searchQuery}
