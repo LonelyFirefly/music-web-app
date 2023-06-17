@@ -1,5 +1,6 @@
 "use client";
 
+import { checkPasswordInDB } from "@/utils/checkPasswordInDB";
 import { validateEmail } from "@/utils/validateEmail";
 import { validatePassword } from "@/utils/validatePassword";
 import { validateTel } from "@/utils/validateTel";
@@ -43,7 +44,7 @@ export default function Page() {
 	const handlePasswordChange = (e) => {
 		const password = e.target.value;
 		setEmailInput(password);
-		const isValidPassword = validatePassword(password);
+		const isValidPassword = checkPasswordInDB(password);
 		setPasswordError(!isValidPassword);
 	};
 
@@ -98,13 +99,13 @@ export default function Page() {
 						}
 						onChange={handleEmailChange}
 					/>
-					<Typography variant="body1" align="center"></Typography>
 					<TextField
 						margin="normal"
 						required
 						fullWidth
 						id="tel"
 						label="Mobile number"
+						defaultValue="+"
 						name="tel"
 						autoComplete="tel"
 						pattern="\+\d+"
@@ -126,11 +127,7 @@ export default function Page() {
 						name="password"
 						autoComplete="current-password"
 						error={passwordError}
-						helperText={
-							passwordError
-								? "Password should be between 8-20 characters, contain at least 1 number, 1 symbol, and 1 capital letter"
-								: null
-						}
+						helperText={passwordError ? "Incorrect password" : null}
 						onChange={handlePasswordChange}
 					/>
 					<FormControlLabel
