@@ -46,6 +46,9 @@ export default function Page() {
 			email: data.get("email"),
 			password: data.get("password"),
 			tel: data.get("tel"),
+			name: data.get("name"),
+			birthDate: data.get("date"),
+			gender: data.get(selectedCheckboxValue),
 		});
 		// Reset form after submission
 		formRef.current.reset();
