@@ -4,11 +4,11 @@ import { getSmallestImageFromAlbum } from "@/utils/getSmallestImageFromAlbum";
 import { useContext, useState } from "react";
 import { LikeSong } from "../LikeSong/LikeSong";
 import { getSongInfo } from "@/utils/getSongInfo";
+import InfiniteScroll from "react-infinite-scroller";
 
-export function SongRadioPlaylistItem({ song }) {
+export default function SongRadioPlaylistItem({ song }) {
 	const { currentSongId, setCurrentSongId, isPlaying, setIsPlaying } =
 		useContext(SongContext);
-	// console.log(song);
 
 	function handleClick() {
 		setCurrentSongId(song.songId);

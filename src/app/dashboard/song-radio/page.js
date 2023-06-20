@@ -4,8 +4,5 @@ import { SongRadioPlaylist } from "@/Components/SongRadioPlaylist/SongRadioPlayl
 import { playedSongsList } from "@/FakeData/playedSongsList";
 
 export default function Page() {
-	return (
-		<SongRadioPlaylist
-			playedSongsList={playedSongsList}></SongRadioPlaylist>
-	);
+	return <SongRadioPlaylist></SongRadioPlaylist>;
 }
